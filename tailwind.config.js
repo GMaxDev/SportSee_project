@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        "pure-red": "ff0101",
+        "pure-red": "#ff0101",
       },
     },
   },

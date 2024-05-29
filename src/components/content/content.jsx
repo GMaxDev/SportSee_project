@@ -1,6 +1,10 @@
 import DailyActivity from "../daily-activity/daily-activity";
 import AverageDurationSessions from "../average-duration-sessions/average-duration-sessions";
 import RadarData from "../radar-data/radar-data";
+import Completion from "../completion/completion";
+
+import icon_fire from "/src/img/icon_fire.svg";
+import MonoData from "../mono-data/mono-data";
 
 /* eslint-disable react/prop-types */
 export default function Content({ name }) {
@@ -22,6 +26,12 @@ export default function Content({ name }) {
       </div>
       <div style={{ width: "258px", height: "263px" }}>
         <RadarData />
+      </div>
+      <div style={{ width: "258px", height: "263px" }}>
+        <Completion />
+      </div>
+      <div>
+        <MonoData img={icon_fire} data="1930" />
       </div>
     </div>
   );

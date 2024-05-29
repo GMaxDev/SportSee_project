@@ -75,6 +75,7 @@ const data = [
 ];
 
 // Custom Legend Component
+// eslint-disable-next-line react-refresh/only-export-components
 const CustomLegend = (props) => {
   const { payload } = props;
   return (

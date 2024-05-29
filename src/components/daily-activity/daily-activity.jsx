@@ -114,7 +114,7 @@ export default class DailyActivity extends PureComponent {
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          className="px-12 py-6 bg-zinc-50"
+          className="px-12 py-6 rounded-md bg-zinc-50"
           width={500}
           height={300}
           data={data}

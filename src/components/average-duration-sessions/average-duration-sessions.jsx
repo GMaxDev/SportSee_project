@@ -81,6 +81,7 @@ const CustomCursor = ({ points, width, height }) => {
 };
 
 export default function AverageDurationSessions() {
+  // eslint-disable-next-line no-unused-vars
   const [hoverIndex, setHoverIndex] = useState(null);
 
   const handleMouseMove = (state) => {
@@ -93,7 +94,7 @@ export default function AverageDurationSessions() {
 
   return (
     <div className="relative rounded-md bg-pure-red">
-      <h2 className="absolute top-0 left-0 z-10 m-4 text-lg font-bold text-white">
+      <h2 className="absolute top-0 left-0 z-10 m-4 text-lg font-bold text-white/50 ">
         Durée moyenne des sessions
       </h2>
       <div className="h-64">

@@ -10,7 +10,7 @@ import icon_cheeseburger from "/src/img/icon_cheeseburger.svg";
 import MonoData from "../mono-data/mono-data";
 
 /* eslint-disable react/prop-types */
-export default function Content({ personalData, activityData}) {
+export default function Content({ personalData, activityData }) {
   return (
     <div className="flex flex-wrap mx-28">
       <div className="mt-9">
@@ -24,7 +24,7 @@ export default function Content({ personalData, activityData}) {
           Félicitation ! Vous avez explosé vos objectifs hier 👏
         </h2>
       </div>
-      
+
       <div className="grid w-full grid-cols-4 grid-rows-2 gap-8">
         <div className="col-start-1 col-end-4">
           <DailyActivity data={activityData.data.sessions} />

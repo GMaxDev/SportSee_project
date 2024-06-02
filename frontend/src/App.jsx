@@ -6,21 +6,22 @@ import "./App.css";
 
 export default function App() {
   const [personalData, setPersonalData] = useState(null);
-  const [activityData, setActivityData] = useState(null)
+  const [activityData, setActivityData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://localhost:3000/user/18");
+        const response = await fetch("http://localhost:3000/user/12");
         const data = await response.json();
         console.log(data);
         setPersonalData(data);
 
-        const activityResponse = await fetch("http://localhost:3000/user/12/activity");
+        const activityResponse = await fetch(
+          "http://localhost:3000/user/12/activity"
+        );
         const activityData = await activityResponse.json();
         console.log(activityData);
         setActivityData(activityData);
-        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -38,7 +39,7 @@ export default function App() {
       <Header />
       <div className="flex">
         <LateralNav />
-        <Content personalData={personalData} activityData={activityData}/>
+        <Content personalData={personalData} activityData={activityData} />
       </div>
     </div>
   );

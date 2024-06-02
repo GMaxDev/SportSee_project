@@ -11,69 +11,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "1",
-    kg: 4000,
-    Kcal: 2400,
-    amt: 2400,
-  },
-  {
-    name: "2",
-    kg: 3000,
-    Kcal: 1398,
-    amt: 2210,
-  },
-  {
-    name: "3",
-    kg: 2000,
-    Kcal: 9800,
-    amt: 2290,
-  },
-  {
-    name: "4",
-    kg: 2780,
-    Kcal: 3908,
-    amt: 2000,
-  },
-  {
-    name: "5",
-    kg: 1890,
-    Kcal: 4800,
-    amt: 2181,
-  },
-  {
-    name: "6",
-    kg: 2390,
-    Kcal: 3800,
-    amt: 2500,
-  },
-  {
-    name: "7",
-    kg: 3490,
-    Kcal: 4300,
-    amt: 2100,
-  },
-  {
-    name: "8",
-    kg: 4000,
-    Kcal: 2400,
-    amt: 2400,
-  },
-  {
-    name: "9",
-    kg: 3000,
-    Kcal: 1398,
-    amt: 2210,
-  },
-  {
-    name: "10",
-    kg: 2000,
-    Kcal: 9800,
-    amt: 2290,
-  },
-];
-
 // Custom Legend Component
 // eslint-disable-next-line react-refresh/only-export-components
 const CustomLegend = (props) => {
@@ -87,7 +24,9 @@ const CustomLegend = (props) => {
             style={{ backgroundColor: entry.color }}
           ></div>
           <span>
-            {entry.value === "kg" ? "Poids (kg)" : "Calories brûlées (kCal)"}
+            {entry.value === "kilogram"
+              ? "Poids (kg)"
+              : "Calories brûlées (kCal)"}
           </span>
         </div>
       ))}
@@ -103,8 +42,8 @@ export default class DailyActivity extends PureComponent {
       const data = payload[0].payload;
       return (
         <div className="bg-[#E60000] text-white p-2 rounded">
-          <p>{`${data.kg} kg`}</p>
-          <p>{`${data.Kcal} kg`} kCal</p>
+          <p>{`${data.kilogram} kg`}</p>
+          <p>{`${data.calories}`} kCal</p>
         </div>
       );
     }
@@ -112,6 +51,12 @@ export default class DailyActivity extends PureComponent {
     return null;
   };
   render() {
+    const { data } = this.props;
+    const maxCalories = data.reduce(
+      (max, session) => (session.calories > max ? session.calories : max),
+      0
+    );
+
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -119,17 +64,17 @@ export default class DailyActivity extends PureComponent {
           width={500}
           height={300}
           data={data}
-          // margin={{
-          //   top: 5,
-          //   right: 30,
-          //   left: 20,
-          //   bottom: 5,
-          // }}
         >
-          <text textAnchor="start">Activité quotidienne</text>
+          <text className="text-lg" y='10%' textAnchor="start">
+            Activité quotidienne
+          </text>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="name" tick={{ dy: 15 }} tickLine={false} />
-          <YAxis orientation="right" />
+          <XAxis dataKey="day" tick={{ dy: 15 }} tickLine={false} />
+          <YAxis
+            dataKey="kilogram"
+            orientation="right"
+            domain={[0, maxCalories]}
+          />
           <Tooltip content={this.renderTooltip} />
           <Legend
             content={<CustomLegend />}
@@ -142,13 +87,13 @@ export default class DailyActivity extends PureComponent {
             }}
           />
           <Bar
-            dataKey="kg"
+            dataKey="kilogram"
             fill="#282D30"
             barSize={10}
             radius={[10, 10, 0, 0]}
           />
           <Bar
-            dataKey="Kcal"
+            dataKey="calories"
             fill="#E60000"
             barSize={10}
             radius={[10, 10, 0, 0]}

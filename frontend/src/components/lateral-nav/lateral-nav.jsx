@@ -6,7 +6,7 @@ import muscuLogo from "../../img/sport_muscu.svg"
 
 export default function LateralNav() {
   return (
-    <div className="flex flex-col justify-evenly w-28 h-screen font-medium text-white flex bg-black items-center">
+    <div className="flex flex-col items-center h-auto font-medium text-white bg-black justify-evenly w-28">
       <div>
         <SquareIcon logo={yogaLogo}/>
         <SquareIcon logo={natationLogo}/>

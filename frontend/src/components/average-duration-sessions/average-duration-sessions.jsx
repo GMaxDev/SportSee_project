@@ -113,7 +113,7 @@ export default function AverageDurationSessions() {
             </defs>
             <Line
               type="monotone"
-              dataKey="pv"
+              dataKey="amt"
               stroke="url(#colorPv)"
               strokeWidth={2}
               dot={false}

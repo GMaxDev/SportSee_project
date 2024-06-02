@@ -10,7 +10,7 @@ import icon_cheeseburger from "/src/img/icon_cheeseburger.svg";
 import MonoData from "../mono-data/mono-data";
 
 /* eslint-disable react/prop-types */
-export default function Content({ personalData, activityData }) {
+export default function Content({ personalData, activityData, averageData }) {
   return (
     <div className="flex flex-wrap mx-28">
       <div className="mt-9">
@@ -31,7 +31,7 @@ export default function Content({ personalData, activityData }) {
         </div>
 
         <div className="col-start-1 col-end-2" style={{ maxWidth: "258px" }}>
-          <AverageDurationSessions data={personalData.averageSessions} />
+          <AverageDurationSessions data={averageData.data.sessions} />
         </div>
 
         <div className="col-start-2 col-end-3" style={{ maxWidth: "258px" }}>

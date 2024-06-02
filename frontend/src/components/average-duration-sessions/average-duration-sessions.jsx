@@ -9,56 +9,11 @@ import {
   Rectangle
 } from "recharts";
 
-const data = [
-  {
-    name: "L",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "M",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "M",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "J",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "V",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "S",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "D",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white border border-gray-300 rounded shadow-lg ">
-        <p className="label">{`${payload[0].payload.uv} min`}</p>
+        <p className="label">{`${payload[0].value} min`}</p>
       </div>
     );
   }
@@ -80,7 +35,13 @@ const CustomCursor = ({ points, width, height }) => {
   );
 };
 
-export default function AverageDurationSessions() {
+// Fonction de formatage des jours
+const dayFormatter = (day) => {
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
+  return days[day - 1];
+};
+
+export default function AverageDurationSessions({data}) {
   // eslint-disable-next-line no-unused-vars
   const [hoverIndex, setHoverIndex] = useState(null);
 
@@ -97,7 +58,7 @@ export default function AverageDurationSessions() {
       <h2 className="absolute top-0 left-0 z-10 m-4 text-lg font-bold text-white/50 ">
         Durée moyenne des sessions
       </h2>
-      <div className="h-64">
+      <div className="h-64 px-2">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             width={300}
@@ -113,16 +74,17 @@ export default function AverageDurationSessions() {
             </defs>
             <Line
               type="monotone"
-              dataKey="amt"
+              dataKey="sessionLength"
               stroke="url(#colorPv)"
               strokeWidth={2}
               dot={false}
             />
             <XAxis
-              dataKey="name"
+              dataKey="day"
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "#fff" }}
+              tick={{ fill: "#fff"}}
+              tickFormatter={dayFormatter}
             />
             <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
           </LineChart>

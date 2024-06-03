@@ -10,7 +10,8 @@ import icon_cheeseburger from "/src/img/icon_cheeseburger.svg";
 import MonoData from "../mono-data/mono-data";
 
 /* eslint-disable react/prop-types */
-export default function Content({ personalData, activityData, averageData }) {
+export default function Content({ personalData, activityData, averageData, performanceData }) {
+
   return (
     <div className="flex flex-wrap mx-28">
       <div className="mt-9">
@@ -35,11 +36,11 @@ export default function Content({ personalData, activityData, averageData }) {
         </div>
 
         <div className="col-start-2 col-end-3" style={{ maxWidth: "258px" }}>
-          <RadarData data={personalData.performance} />
+          <RadarData data={performanceData.data} />
         </div>
 
         <div className="col-start-3 col-end-4" style={{ maxWidth: "258px" }}>
-          <Completion data={personalData.completion} />
+          <Completion data={personalData.data} />
         </div>
 
         <div className="col-start-4 col-end-5 row-start-1 row-end-4 ">

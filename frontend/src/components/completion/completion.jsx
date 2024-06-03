@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { PureComponent } from "react";
 import {
   RadialBarChart,
@@ -15,15 +16,17 @@ const data = [
   },
 ];
 
-// const style = {
-//   top: "50%",
-//   right: 0,
-//   transform: "translate(0, -50%)",
-//   lineHeight: "24px",
-// };
-
 export default class Completion extends PureComponent {
   render() {
+    const { data } = this.props;
+    const scoreData = [
+      {
+        name: "completion",
+        todayScore: data.todayScore * 100, // Transforme le score en pourcentage
+        fill: "#ff0101",
+      },
+    ];
+    
     return (
       <div className="relative flex items-center justify-center h-64 rounded-md bg-zinc-50">
       <h2 className="absolute top-0 left-0 z-10 m-4 text-lgtext-black ">
@@ -31,7 +34,7 @@ export default class Completion extends PureComponent {
       </h2>
         <h3 className="absolute flex flex-col items-center text-[#74798C]">
           <span className="text-2xl font-bold text-black">
-            {`${data[0].uv}`}% <br />
+            {scoreData[0].todayScore}% <br />
           </span>{" "}
           de votre <br />
           objectif
@@ -43,7 +46,7 @@ export default class Completion extends PureComponent {
             innerRadius="70%"
             outerRadius="70%"
             barSize={10}
-            data={data}
+            data={scoreData}
           >
             <PolarAngleAxis
               type="number"
@@ -55,7 +58,7 @@ export default class Completion extends PureComponent {
               minAngle={15}
               background
               clockWise
-              dataKey="uv"
+              dataKey="todayScore"
               cornerRadius={10}
             />
             {/* <Legend

@@ -8,6 +8,7 @@ export default function App() {
   const [personalData, setPersonalData] = useState(null);
   const [activityData, setActivityData] = useState(null);
   const [averageData, setAverageData] = useState(null);
+  const [performanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,8 +29,14 @@ export default function App() {
           "http://localhost:3000/user/12/average-sessions"
         );
         const averageData = await averageResponse.json();
-        console.log(averageData.data.sessions);
+        console.log(averageData);
         setAverageData(averageData);
+
+        const performanceResponse = await fetch("http://localhost:3000/user/12/performance");
+        const performanceData = await performanceResponse.json();
+        console.log(performanceData);
+        setPerformanceData(performanceData);
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -39,7 +46,7 @@ export default function App() {
   }, []);
 
   // Affiche un message de chargement pendant que les données sont récupérées
-  if (!personalData || !activityData || !averageData) {
+  if (!personalData || !activityData || !averageData || !performanceData) {
     return <div>Loading...</div>;
   }
 
@@ -52,6 +59,7 @@ export default function App() {
           personalData={personalData}
           activityData={activityData}
           averageData={averageData}
+          performanceData={performanceData}
         />
       </div>
     </div>

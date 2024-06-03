@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { PureComponent } from "react";
 import {
   Radar,
@@ -8,57 +9,34 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    subject: "Intensité",
-    A: 120,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Vitesse",
-    A: 98,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Force",
-    A: 86,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Endurance ",
-    A: 99,
-    B: 100,
-    fullMark: 150,
-  },
-  {
-    subject: "Energie",
-    A: 85,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "Cardio ",
-    A: 65,
-    B: 85,
-    fullMark: 150,
-  },
-];
-
 export default class RadarData extends PureComponent {
+  // Transformer les données pour qu'elles soient compatibles avec RadarChart
+  transformData = (data) => {
+    const { kind, data: values } = data;
+    return values.map((item) => ({
+      subject: kind[item.kind],
+      value: item.value,
+    }));
+  };
+  
   render() {
+    const { data } = this.props;
+    const transformedData = this.transformData(data);
+
     return (
       <div className="relative h-64 rounded-md bg-zinc-800 ">
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
+          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={transformedData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" className="text-xs" />
-            <PolarRadiusAxis className="text-xs" tick={false} axisLine={false}/>
+            <PolarRadiusAxis
+              className="text-xs"
+              tick={false}
+              axisLine={false}
+            />
             <Radar
-              name="Mike"
-              dataKey="A"
+              name="Performance"
+              dataKey="value"
               stroke="#FF0101B2"
               fill="#FF0101B2"
               fillOpacity={0.7}

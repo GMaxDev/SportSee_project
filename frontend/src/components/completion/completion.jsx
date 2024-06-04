@@ -8,21 +8,13 @@ import {
   PolarAngleAxis,
 } from "recharts";
 
-const data = [
-  {
-    name: "completion",
-    uv: 12,
-    fill: "#ff0101",
-  },
-];
-
 export default class Completion extends PureComponent {
   render() {
     const { data } = this.props;
     const scoreData = [
       {
         name: "completion",
-        todayScore: data.todayScore * 100, // Transforme le score en pourcentage
+        todayScore: data.todayScore ? data.todayScore * 100 : data.score * 100,
         fill: "#ff0101",
       },
     ];

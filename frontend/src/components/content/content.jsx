@@ -26,7 +26,7 @@ export default function Content({ personalData, activityData, averageData, perfo
         </h2>
       </div>
 
-      <div className="grid w-full grid-cols-4 grid-rows-2 gap-8">
+      <div className="grid w-full h-auto grid-cols-4 grid-rows-2 gap-8">
         <div className="col-start-1 col-end-4">
           <DailyActivity data={activityData.data.sessions} />
         </div>

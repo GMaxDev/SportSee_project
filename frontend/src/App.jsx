@@ -10,29 +10,31 @@ export default function App() {
   const [averageData, setAverageData] = useState(null);
   const [performanceData, setPerformanceData] = useState(null);
 
+  const userId = 12
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://localhost:3000/user/12");
+        const response = await fetch(`http://localhost:3000/user/${userId}`);
         const data = await response.json();
         console.log(data);
         setPersonalData(data);
 
         const activityResponse = await fetch(
-          "http://localhost:3000/user/12/activity"
+          `http://localhost:3000/user/${userId}/activity`
         );
         const activityData = await activityResponse.json();
         console.log(activityData);
         setActivityData(activityData);
 
         const averageResponse = await fetch(
-          "http://localhost:3000/user/12/average-sessions"
+          `http://localhost:3000/user/${userId}/average-sessions`
         );
         const averageData = await averageResponse.json();
         console.log(averageData);
         setAverageData(averageData);
 
-        const performanceResponse = await fetch("http://localhost:3000/user/12/performance");
+        const performanceResponse = await fetch(`http://localhost:3000/user/${userId}/performance`);
         const performanceData = await performanceResponse.json();
         console.log(performanceData);
         setPerformanceData(performanceData);

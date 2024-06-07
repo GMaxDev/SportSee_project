@@ -1,0 +1,58 @@
+{
+  "user": {
+    "12": {
+      "userInfos": {
+        "firstName": "Mock",
+        "lastName": "Simu",
+        "age": 40
+      },
+      "todayScore": 0.77,
+      "keyData": {
+        "calorieCount": 1500,
+        "proteinCount": 300,
+        "carbohydrateCount": 200,
+        "lipidCount": 100
+      },
+      "activity": {
+        "sessions": [
+          {"day": "2020-07-01", "kilogram": 70, "calories": 340},
+          {"day": "2020-07-02", "kilogram": 70, "calories": 220},
+          {"day": "2020-07-03", "kilogram": 71, "calories": 180},
+          {"day": "2020-07-04", "kilogram": 71, "calories": 290},
+          {"day": "2020-07-05", "kilogram": 70, "calories": 360},
+          {"day": "2020-07-06", "kilogram": 78, "calories": 262},
+          {"day": "2020-07-07", "kilogram": 76, "calories": 190}
+        ]
+      },
+      "averageSessions": {
+        "sessions": [
+          {"day": 1, "sessionLength": 30},
+          {"day": 2, "sessionLength": 23},
+          {"day": 3, "sessionLength": 15},
+          {"day": 4, "sessionLength": 20},
+          {"day": 5, "sessionLength": 23},
+          {"day": 6, "sessionLength": 24},
+          {"day": 7, "sessionLength": 50}
+        ]
+      },
+      "performance": {
+        "kind": {
+          "1": "cardio",
+          "2": "energy",
+          "3": "endurance",
+          "4": "strength",
+          "5": "speed",
+          "6": "intensity"
+        },
+        "data": [
+          {"value": 160, "kind": 1},
+          {"value": 160, "kind": 2},
+          {"value": 170, "kind": 3},
+          {"value": 125, "kind": 4},
+          {"value": 100, "kind": 5},
+          {"value": 145, "kind": 6}
+        ]
+      }
+    }
+  }
+}

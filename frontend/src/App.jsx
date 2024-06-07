@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "./components/header/header";
 import LateralNav from "./components/lateral-nav/lateral-nav";
 import Content from "./components/content/content";
+import {
+  fetchUserData,
+  fetchUserActivity,
+  fetchUserAverageSessions,
+  fetchUserPerformance,
+} from "./services/apiService";
 import "./App.css";
 
 export default function App() {
@@ -10,33 +17,23 @@ export default function App() {
   const [averageData, setAverageData] = useState(null);
   const [performanceData, setPerformanceData] = useState(null);
 
-  const userId = 12
+  const { id } = useParams();
+  let userId = id ? id : 12;
+  // console.log(params);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3000/user/${userId}`);
-        const data = await response.json();
-        console.log(data);
-        setPersonalData(data);
+        const personalData = await fetchUserData(userId);
+        setPersonalData(personalData);
 
-        const activityResponse = await fetch(
-          `http://localhost:3000/user/${userId}/activity`
-        );
-        const activityData = await activityResponse.json();
-        console.log(activityData);
+        const activityData = await fetchUserActivity(userId);
         setActivityData(activityData);
 
-        const averageResponse = await fetch(
-          `http://localhost:3000/user/${userId}/average-sessions`
-        );
-        const averageData = await averageResponse.json();
-        console.log(averageData);
+        const averageData = await fetchUserAverageSessions(userId);
         setAverageData(averageData);
 
-        const performanceResponse = await fetch(`http://localhost:3000/user/${userId}/performance`);
-        const performanceData = await performanceResponse.json();
-        console.log(performanceData);
+        const performanceData = await fetchUserPerformance(userId);
         setPerformanceData(performanceData);
         
       } catch (error) {
@@ -45,7 +42,7 @@ export default function App() {
     }
 
     fetchData();
-  }, []);
+  }, [userId]);
 
   // Affiche un message de chargement pendant que les données sont récupérées
   if (!personalData || !activityData || !averageData || !performanceData) {

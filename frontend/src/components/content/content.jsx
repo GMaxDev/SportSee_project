@@ -18,7 +18,7 @@ export default function Content({ personalData, activityData, averageData, perfo
         <h1 className="text-5xl font-medium">
           Bonjour{" "}
           <span className="text-pure-red">
-            {personalData.data.userInfos.firstName}
+            {personalData.userInfos.firstName}
           </span>
         </h1>
         <h2 className="my-10">
@@ -28,46 +28,46 @@ export default function Content({ personalData, activityData, averageData, perfo
 
       <div className="grid w-full h-auto grid-cols-4 grid-rows-2 gap-8">
         <div className="col-start-1 col-end-4">
-          <DailyActivity data={activityData.data.sessions} />
+          <DailyActivity data={activityData.sessions} />
         </div>
 
         <div className="col-start-1 col-end-2" style={{ maxWidth: "258px" }}>
-          <AverageDurationSessions data={averageData.data.sessions} />
+          <AverageDurationSessions data={averageData.sessions} />
         </div>
 
         <div className="col-start-2 col-end-3" style={{ maxWidth: "258px" }}>
-          <RadarData data={performanceData.data} />
+          <RadarData data={performanceData} />
         </div>
 
         <div className="col-start-3 col-end-4" style={{ maxWidth: "258px" }}>
-          <Completion data={personalData.data} />
+          <Completion data={personalData} />
         </div>
 
         <div className="col-start-4 col-end-5 row-start-1 row-end-4 ">
           <MonoData
             img={icon_fire}
-            data={personalData.data.keyData.calorieCount}
+            data={personalData.keyData.calorieCount}
             name="Calories"
             label="kCal"
             bgColor="rgba(255, 0, 0, 0.1)"
           />
           <MonoData
             img={icon_chicken}
-            data={personalData.data.keyData.proteinCount}
+            data={personalData.keyData.proteinCount}
             name="Proteines"
             label="g"
             bgColor="rgba(74, 184, 255, 0.1)"
           />
           <MonoData
             img={icon_apple}
-            data={personalData.data.keyData.carbohydrateCount}
+            data={personalData.keyData.carbohydrateCount}
             name="Glucides"
             label="g"
             bgColor="rgba(249, 206, 35, 0.1)"
           />
           <MonoData
             img={icon_cheeseburger}
-            data={personalData.data.keyData.lipidCount}
+            data={personalData.keyData.lipidCount}
             name="Lipides"
             label="g"
             bgColor="rgba(253, 81, 129, 0.1)"

@@ -11,6 +11,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import { formatDate } from "../../utils/dateUtils";
+
 // Custom Legend Component
 // eslint-disable-next-line react-refresh/only-export-components
 const CustomLegend = (props) => {
@@ -69,7 +71,7 @@ export default class DailyActivity extends PureComponent {
             Activité quotidienne
           </text>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="day" tick={{ dy: 15 }} tickLine={false} />
+          <XAxis dataKey="day" tick={{ dy: 15 }} tickLine={false} tickFormatter={formatDate} />
           <YAxis
             dataKey="kilogram"
             orientation="right"

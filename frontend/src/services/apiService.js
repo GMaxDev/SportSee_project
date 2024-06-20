@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import mockData from "./data.json";
 const baseURL = "http://localhost:3000";
-const mock = true; // le passer à true pour utiliser les data mock
+const mock = false; // le passer à true pour utiliser les data mock
 
 export const fetchUserData = async (userId) => {
   if (mock) {

@@ -1,8 +1,13 @@
-const express = require("express");
-const app = express();
+const express = require('express')
+const cors = require('cors')
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+const router = require('./routes')
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+const app = express()
+app.use(cors())
+const port = 3000
 
-module.exports = app;
+app.use(router)
+
+app.listen(port, () => console.log(`Magic happens on port ${port}`))
+module.exports = app

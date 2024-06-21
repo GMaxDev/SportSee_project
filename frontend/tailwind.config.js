@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         "pure-red": "#ff0101",
-        "base-gray": "#FBFBFB"
+        "base-gray": "#FBFBFB",
       },
     },
   },

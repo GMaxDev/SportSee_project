@@ -1,7 +1,8 @@
 /* eslint-disable no-undef */
 import mockData from "./data.json";
 const baseURL = "http://localhost:3000";
-const mock = false; // le passer à true pour utiliser les data mock
+const mock = import.meta.env.VITE_API_MOCK === 'true'; // le passer à true pour utiliser les data mock
+console.log(mock)
 
 export const fetchUserData = async (userId) => {
   if (mock) {

@@ -16,3 +16,6 @@ pnpm i
 
 Pour lancer le front et le backend en même temps, veuillez taper dans le terminal :
 pnpm -F '*' dev
+
+Pour changer l'utilisation de data par l'API ou les datas mock, veuillez changer le variable d'environnement 
+ VITE_API_MOCK en true ou false

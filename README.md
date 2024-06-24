@@ -12,7 +12,7 @@ Pour ce projet, j'utilise pnpm. Pou l'installer, veuillez taper dans le terminal
 pnpm i
 
 Pour installer les dépendances du projet, veuillez taper dans le terminal :
-npm i
+pnpm i
 
 Pour lancer le front et le backend en même temps, veuillez taper dans le terminal :
 pnpm -F '*' dev
